@@ -24,6 +24,8 @@ cd C:\Windows\System32
 
 Приглашение в консоли сменилось на `PS C:\Windows\System32>`, значит переход прошел нормально.
 
+![Шаг 1. Переход в System32](soprovozhdenie_screens/step1_cd.jpg)
+
 ---
 
 ### Шаг 2. Разрядность и архитектура notepad.exe
@@ -54,6 +56,8 @@ $pe = [BitConverter]::ToInt32($b, 0x3C)
 
 Она вывела полный путь к файлу и версию продукта. Номер версии у стандартных программ Windows совпадает с номером сборки самой системы.
 
+![Шаг 2. Версия продукта notepad.exe](soprovozhdenie_screens/step2_versioninfo.jpg)
+
 ---
 
 ### Шаг 3. Загруженные DLL
@@ -71,6 +75,8 @@ Get-Process notepad | Select-Object -ExpandProperty Modules | Where-Object Modul
 ```
 
 `kernel32.dll` отвечает за память, потоки и файлы, `user32.dll` за окна и элементы интерфейса. Для программы вроде Блокнота эти две библиотеки основные.
+
+![Шаг 3. Список загруженных модулей notepad.exe](soprovozhdenie_screens/step3_modules.jpg)
 
 ---
 
@@ -122,6 +128,8 @@ Get-Process notepad | Select-Object -ExpandProperty Modules | Where-Object Modul
 
 Из этого видно, что падение вызвано не самой системой: сбой произошел внутри библиотеки `tier0.dll`, которая принадлежит игре. Код `c0000005` означает, что программа обратилась к области памяти, к которой у нее нет доступа. Именно по таким данным инженер понимает, куда смотреть дальше: в код или файлы игры, а не в настройки Windows.
 
+![Шаг 1. Анализ сбоя в Просмотре событий](soprovozhdenie_screens/lr2_step1_eventvwr.jpg)
+
 ---
 
 ### Шаг 2. Настройка совместимости для «старой» программы
@@ -134,6 +142,8 @@ Get-Process notepad | Select-Object -ExpandProperty Modules | Where-Object Modul
 6. Нажал «Применить», окно пока не закрывал.
 
 Так я вручную включил для файла слой совместимости. Windows сохраняет эти настройки в реестре в ветке `AppCompatFlags\Layers`, и при запуске файла загрузчик подключает к процессу библиотеку `AcLayers.dll`.
+
+![Шаг 2. Настройка режима совместимости](soprovozhdenie_screens/lr2_step2_compatibility.jpg)
 
 ---
 

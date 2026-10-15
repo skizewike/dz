@@ -37,7 +37,7 @@ reg query HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal
 
 **Скриншот №1:** Консоль администратора с выводом команды `reg query` для ветки `SafeBoot\Minimal`, где видны ключи служб, файловых систем и GUID классов оборудования.
 
-![Скриншот 1](screen1.png)
+![Скриншот 1](lab3_screens/lab3_screen1.png)
 
 ---
 
@@ -61,7 +61,7 @@ reg query HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\Spooler
 
 **Скриншот №2:** Окно командной строки с попыткой запросить раздел `Spooler` в `SafeBoot\Minimal` и полученной системной ошибкой отсутствия ключа.
 
-![Скриншот 2](screen2.png)
+![Скриншот 2](lab3_screens/lab3_screen2.png)
 
 ---
 
@@ -84,7 +84,7 @@ reg query HKLM\SYSTEM\CurrentControlSet\Control\SafeBoot\Minimal\Spooler
 
 **Скриншот №3:** Открытое окно свойств службы «Диспетчер печати» на вкладке «Восстановление» со всеми заданными параметрами автоперезапуска.
 
-![Скриншот 3](screen3.png)
+![Скриншот 3](lab3_screens/lab3_screen3.png)
 
 ---
 
@@ -114,7 +114,7 @@ HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Spooler
 
 **Скриншот №4:** Консоль администратора с выводом команды `reg query ... /v FailureActions`, показывающая шестнадцатеричный ключ `REG_BINARY`.
 
-![Скриншот 4](screen4.png)
+![Скриншот 4](lab3_screens/lab3_screen4.png)
 
 ---
 
